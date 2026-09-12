@@ -13,7 +13,6 @@ const errorPrefixes = {
     en: "Error: "
 };
 
-// Регистрация меню ПКМ
 browserAPI.runtime.onInstalled.addListener(() => {
     browserAPI.contextMenus.removeAll(() => {
         browserAPI.contextMenus.create({
@@ -24,7 +23,6 @@ browserAPI.runtime.onInstalled.addListener(() => {
     });
 });
 
-// Клик по меню ПКМ
 browserAPI.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === "analyze-selection" && info.selectionText) {
         browserAPI.storage.local.get(['selectedModel', 'selectedLang'], (result) => {
@@ -35,7 +33,7 @@ browserAPI.contextMenus.onClicked.addListener((info, tab) => {
     }
 });
 
-// Хоткей скриншота Ctrl+Shift+X
+
 browserAPI.commands.onCommand.addListener((command) => {
     if (command === "take-screenshot") {
         browserAPI.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
@@ -62,7 +60,6 @@ browserAPI.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
 });
 
-// Анализ выделенного текста
 async function processTextAnalysis(codeText, tabId, modelName, langCode) {
     const currentLoading = loadingTexts[langCode] || loadingTexts.ru;
     const currentErr = errorPrefixes[langCode] || errorPrefixes.ru;
@@ -87,7 +84,7 @@ async function processTextAnalysis(codeText, tabId, modelName, langCode) {
     }
 }
 
-// Анализ скриншота
+
 async function processScreenshot(coords, tabId, modelName, langCode) {
     const currentLoading = loadingTexts[langCode] || loadingTexts.ru;
     const currentErr = errorPrefixes[langCode] || errorPrefixes.ru;
