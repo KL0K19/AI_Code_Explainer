@@ -14,7 +14,7 @@
         }
     });
 
-    // --- Режим выделения скриншота ---
+
     function startSelectionMode() {
         if (overlay) return;
 
@@ -114,29 +114,24 @@
         }
     }
 
-    // --- Парсер оформления кода и Markdown ---
     function formatMarkdown(text) {
         if (!text) return "";
 
-        // Экранирование HTML
+
         let safe = text
             .replace(/&/g, "&amp;")
             .replace(/</g, "&lt;")
             .replace(/>/g, "&gt;");
 
-        // Блоки кода ```...```
         safe = safe.replace(/```[a-zA-Z]*\n?([\s\S]*?)```/g, '<pre style="background: #12151a; border: 1px solid #2d333b; border-radius: 6px; padding: 10px; margin: 8px 0; overflow-x: auto; color: #adbac7;"><code>$1</code></pre>');
 
-        // Выделение строчного кода `код` в цветные плашки
         safe = safe.replace(/`([^`\n]+)`/g, '<span style="background: #1f242d; color: #58a6ff; padding: 2px 6px; border-radius: 4px; border: 1px solid #2d333b; font-family: Consolas, \'Fira Code\', monospace; font-size: 12px; display: inline-block;">$1</span>');
 
-        // Жирный шрифт **текст**
         safe = safe.replace(/\*\*([^*]+)\*\*/g, '<strong style="color: #ffffff; font-weight: 600;">$1</strong>');
 
         return safe;
     }
 
-    // --- Модальное окно ---
     function showResultModal(text) {
         let modal = document.getElementById('ai-code-modal');
 
@@ -166,7 +161,6 @@
                 boxSizing: 'border-box'
             });
 
-            // Шапка для перетаскивания
             const header = document.createElement('div');
             Object.assign(header.style, {
                 padding: '10px 14px',
@@ -202,7 +196,6 @@
 
             header.appendChild(closeBtn);
 
-            // Перетаскивание за шапку
             header.addEventListener('mousedown', (e) => {
                 if (e.target === closeBtn) return;
                 e.preventDefault();
@@ -242,7 +235,6 @@
                 document.addEventListener('mouseup', onMouseUp);
             });
 
-            // Контейнер под текст
             const content = document.createElement('div');
             content.id = 'ai-code-modal-content';
             Object.assign(content.style, {
@@ -260,7 +252,6 @@
             modal.appendChild(header);
             modal.appendChild(content);
 
-            // Добавление интерактивных рамок изменения размера со всех боковых сторон
             setupWindowResizers(modal);
 
             document.body.appendChild(modal);
@@ -273,7 +264,6 @@
         }
     }
 
-    // Создание рамок изменения размеров (верх, низ, право, лево и 4 угла)
     function setupWindowResizers(modal) {
         const directions = ['n', 's', 'e', 'w', 'ne', 'nw', 'se', 'sw'];
 
