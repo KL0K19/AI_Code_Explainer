@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
         hintElement.innerHTML = hints[lang](keyDisplay);
     }
 
-    // Считываем активную комбинацию клавиш из настроек браузера
     if (browserAPI.commands && browserAPI.commands.getAll) {
         browserAPI.commands.getAll((commands) => {
             const screenCmd = commands.find(c => c.name === "take-screenshot");
