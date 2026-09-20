@@ -1,3 +1,5 @@
+import { API_KEY } from './config.js';
+
 const browserAPI = typeof browser !== "undefined" ? browser : chrome;
 let currentAbortController = null;
 
@@ -26,7 +28,7 @@ browserAPI.runtime.onInstalled.addListener(() => {
 browserAPI.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === "analyze-selection" && info.selectionText) {
         browserAPI.storage.local.get(['selectedModel', 'selectedLang'], (result) => {
-            const modelName = result.selectedModel || 'gemini-2.0-flash';
+            const modelName = result.selectedModel || 'gemini-3.6-flash';
             const langCode = result.selectedLang || 'ru';
             processTextAnalysis(info.selectionText, tab.id, modelName, langCode);
         });

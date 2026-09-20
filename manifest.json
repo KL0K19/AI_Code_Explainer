@@ -10,7 +10,7 @@
   ],
   "background": {
     "service_worker": "background.js",
-    "scripts": ["config.js","background.js"]
+    "type": "module"
   },
   "action": {
     "default_popup": "popup.html"
