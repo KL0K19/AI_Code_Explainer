@@ -35,7 +35,7 @@
 
 ### 1. Клонирование репозитория
 ```bash
-git clone [https://github.com/ВАШ_НИК/ВАШ_РЕПОЗИТОРИЙ.git](https://github.com/ВАШ_НИК/ВАШ_РЕПОЗИТОРИЙ.git)
+git clone [https://github.com/KL0K19/AI_Code_Explainer](https://github.com/KL0K19/AI_Code_Explainer)
 cd AI_Code_Explainer
 
 2. Добавление API-ключа
