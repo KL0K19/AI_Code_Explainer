@@ -35,7 +35,7 @@ A cross-browser extension for line-by-line source code analysis and explanation 
 
 ### 1. Clone repository
 ```bash
-git clone [https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git](https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git)
+git clone [https://github.com/KL0K19/AI_Code_Explainer](https://github.com/KL0K19/AI_Code_Explainer)
 cd AI_Code_Explainer
 
 2. Add API key
